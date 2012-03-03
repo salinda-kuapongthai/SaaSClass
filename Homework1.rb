@@ -58,3 +58,22 @@ def rps_tournament_winner(tournament)
 end
 
 rps_tournament_winner([[[["Armando","P"],["Dave","S"]],[["Richard","R"],["Michael","S"]]],[[["Allen","S"],["Omer","P"]],[["David E.","R"],["Richaed X.","P"]]]])
+
+def combine_anagrams(words)
+  group = []
+  hash = Hash.new
+  words.each do |word|
+   sortStr = word.chars.sort.join.downcase
+   if hash[sortStr] == nil
+    hash[sortStr] =  [word]
+   else
+    hash[sortStr] += [word]
+   end
+  end
+  hash.each do |key,data|
+    group += [data]
+  end
+  return group
+end
+
+combine_anagrams(["cars","for","potatoes","racs","four","scar","creams","scream"])
